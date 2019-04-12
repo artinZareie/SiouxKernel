@@ -1,8 +1,7 @@
 <?php
 
-require_once "../src/Kernel/ENV.php";
+require_once "../vendor/autoload.php";
 
-use SiouxKernel\Kernel\ENV;
+use SiouxKernel\HTTP\Manager;
 
-ENV::set("MYNAME", "ARTISAN");
-echo ENV::get('MYNAME');
+Manager::debug(Manager::phpRequests());

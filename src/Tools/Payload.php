@@ -6,6 +6,8 @@ class Payload
 {
     public static function requestDecoder(string $encoded): array
     {
+        if ($encoded == "")
+            return [];
         $decoded = [];
         foreach (explode('&', $encoded) as $hook) {
             $payload = explode('=', $hook);

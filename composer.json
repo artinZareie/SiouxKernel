@@ -14,8 +14,10 @@
         "php": ">=7.0.0"
     },
     "autoload": {
-        "psr-0": {
-            "SiouxKernel": "src/"
+        "psr-4": {
+            "SiouxKernel\\HTTP\\": "src/HTTP",
+            "SiouxKernel\\Kernel\\": "src/Kernel",
+            "SiouxKernel\\Tools\\": "src/Tools"
         }
     }
 }

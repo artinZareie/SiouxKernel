@@ -4,7 +4,11 @@ namespace SiouxKernel\Kernel;
 
 class Kernel
 {
-    public static function version()
+    /**
+     * @version 1.0.0
+     * @return string (version of kernel)
+     */
+    public static function version(): string
     {
         return '1.0.0';
     }

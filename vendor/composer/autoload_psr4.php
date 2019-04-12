@@ -6,4 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'SiouxKernel\\Tools\\' => array($baseDir . '/src/Tools'),
+    'SiouxKernel\\Kernel\\' => array($baseDir . '/src/Kernel'),
+    'SiouxKernel\\HTTP\\' => array($baseDir . '/src/HTTP'),
 );
