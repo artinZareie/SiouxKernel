@@ -1,0 +1,21 @@
+{
+    "name": "artin/sioux-kernel",
+    "description": "A Kernel For PHP To Easy HTTP Handling And A Lot Of Default Classes To Make Coding Easier",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artin Zareie",
+            "email": "artin.zareie@yahoo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "SiouxKernel": "src/"
+        }
+    }
+}
