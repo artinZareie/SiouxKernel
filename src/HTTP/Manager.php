@@ -8,6 +8,111 @@ use SiouxKernel\Tools\Payload;
 
 class Manager
 {
+
+    protected static $ob_status = false;
+
+    public static function sleep(int $seconds): void
+    {
+        sleep($seconds);
+    }
+
+    /**
+     * @see https://www.php.net/manual/en/function.ob-start.php
+     */
+    public static function obEndFlush(): void
+    {
+        if (self::$ob_status)
+            self::obEndFlush();
+    }
+
+    /**
+     * @see https://www.php.net/manual/en/function.ob-start.php
+     */
+    public static function obFlush(): void
+    {
+        if (self::$ob_status)
+            ob_flush();
+    }
+
+    /**
+     * @see https://www.php.net/manual/en/function.ob-start.php
+     * @return string
+     */
+    public static function cleanPageWithData(): string
+    {
+        if (self::$ob_status)
+            return ob_get_clean();
+        return "";
+    }
+
+    /**
+     * @see https://www.php.net/manual/en/function.ob-start.php
+     */
+    public static function cleanPage(): void
+    {
+        if (self::$ob_status)
+            ob_clean();
+    }
+
+    /**
+     * @see https://www.php.net/manual/en/function.ob-start.php
+     * @param callable|null $callable
+     */
+    public static function obStarter(callable $callable = null): void
+    {
+        ob_start($callable);
+        self::$ob_status = true;
+    }
+
+    /**
+     * @see https://www.php.net/manual/en/function.ob-start.php
+     */
+    public static function sendRendered(): void
+    {
+        flush();
+    }
+
+    /**
+     * @param string $header
+     * @param string $replace
+     */
+    public static function setHeader(string $header, string $replace = ''): void
+    {
+        header($header, $replace);
+    }
+
+    /**
+     * @see https://www.php.net/manual/en/function.ob-start.php
+     */
+    public static function disableOb(): void
+    {
+        ini_set('output_buffering', 'off');
+        ini_set('zlib.output_compression', false);
+        ini_set('implicit_flush', true);
+        ob_implicit_flush(true);
+        while (ob_get_level() > 0) {
+            $level = ob_get_level();
+            ob_end_clean();
+            if (ob_get_level() == $level) break;
+        }
+    }
+
+    /**
+     * @param string|null $dir
+     * @param int $port
+     */
+    public static function devServer(string $dir = null, int $port = 8000): void
+    {
+        $cmd = "php -S localhost:${port}";
+        if (!is_null($dir) && $dir !== "")
+            $cmd .= " -t ${dir}";
+
+        self::setHeader("Content-type: text/plain");
+
+        self::disableOb();
+        system($cmd);
+    }
+
     /**
      * @return string
      */
@@ -99,7 +204,7 @@ class Manager
     /**
      * @param string $status
      */
-    public static function die(string $status): void
+    public static function die(string $status = ''): void
     {
         die($status);
     }
@@ -113,18 +218,22 @@ class Manager
     }
 
     /**
-     * @param $data
+     * @param ...$data
      */
-    public static function debug($data): void
+    public static function debug(...$data): void
     {
-        var_dump($data);
+        foreach ($data as $item) {
+            var_dump($item);
+        }
     }
 
     /**
-     * @param string $data
+     * @param string ...$data
      */
-    public static function send(string $data): void
+    public static function send(string ...$data): void
     {
-        echo $data;
+        foreach ($data as $item) {
+            echo $item;
+        }
     }
 }
