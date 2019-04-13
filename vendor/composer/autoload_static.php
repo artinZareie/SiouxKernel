@@ -11,7 +11,9 @@ class ComposerStaticInit4d02bc074b613fbab6b71c50f2e122c2
         array (
             'SiouxKernel\\Tools\\' => 18,
             'SiouxKernel\\Kernel\\' => 19,
+            'SiouxKernel\\Interfaces\\' => 23,
             'SiouxKernel\\HTTP\\' => 17,
+            'SiouxKernel\\Factories\\' => 22,
         ),
     );
 
@@ -24,9 +26,17 @@ class ComposerStaticInit4d02bc074b613fbab6b71c50f2e122c2
         array (
             0 => __DIR__ . '/../..' . '/src/Kernel',
         ),
+        'SiouxKernel\\Interfaces\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Interfaces',
+        ),
         'SiouxKernel\\HTTP\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/HTTP',
+        ),
+        'SiouxKernel\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Factories',
         ),
     );
 

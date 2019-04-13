@@ -17,7 +17,9 @@
         "psr-4": {
             "SiouxKernel\\HTTP\\": "src/HTTP",
             "SiouxKernel\\Kernel\\": "src/Kernel",
-            "SiouxKernel\\Tools\\": "src/Tools"
+            "SiouxKernel\\Tools\\": "src/Tools",
+            "SiouxKernel\\Factories\\": "src/Factories",
+            "SiouxKernel\\Interfaces\\": "src/Interfaces"
         }
     }
 }
