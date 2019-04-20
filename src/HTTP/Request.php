@@ -61,4 +61,12 @@ class Request
     {
         return ArrayHelper::only($this->all(), $filters);
     }
+
+    /**
+     * @return string
+     */
+    public function uri(): string
+    {
+        return Manager::requestURI();
+    }
 }

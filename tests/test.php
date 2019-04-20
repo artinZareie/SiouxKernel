@@ -3,6 +3,7 @@
 require_once "../vendor/autoload.php";
 
 use SiouxKernel\HTTP\Manager;
+use SiouxKernel\HTTP\Server;
 
 
-Manager::debug(\SiouxKernel\Tools\ArrayHelper::except(['a' => 'b', 'b' => 'c', 'c' => 'd'], ['a', 'c']));
+Server::createServer();

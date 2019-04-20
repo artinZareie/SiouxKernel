@@ -8,9 +8,13 @@ use SiouxKernel\Tools\DirHelper;
 
 class Server
 {
+    /***
+     * @uses for development
+     * @version 1.0.0
+     * @notice not for production use
+     */
     public static function createServer()
     {
-        var_dump(DirHelper::processDirectory());
-        die();
+        Manager::devServer(DirHelper::processDirectory());
     }
 }
