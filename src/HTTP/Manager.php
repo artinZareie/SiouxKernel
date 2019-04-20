@@ -4,6 +4,7 @@
 namespace SiouxKernel\HTTP;
 
 
+use SiouxKernel\Kernel\Terminal;
 use SiouxKernel\Tools\Payload;
 
 class Manager
@@ -110,7 +111,7 @@ class Manager
         self::setHeader("Content-type: text/plain");
 
         self::disableOb();
-        system($cmd);
+        Terminal::run(system($cmd));
     }
 
     /**
